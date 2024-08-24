@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://f8ooum2josgp"]
+
+[ext_resource type="Script" path="res://idea_ciosai/structure/boss.gd" id="1_fxgkr"]
+[ext_resource type="PackedScene" uid="uid://2se2hmou1tgn" path="res://idea_ciosai/component/hit_area.tscn" id="2_d4hbp"]
+[ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_nvthk"]
+[ext_resource type="PackedScene" uid="uid://qo3iqswgc2w1" path="res://idea_ciosai/component/laser.tscn" id="4_sarsx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2g2vt"]
+radius = 85.2115
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rm1ku"]
+radius = 57.0088
+
+[node name="Boss" type="StaticBody2D"]
+position = Vector2(539, 318)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_fxgkr")
+
+[node name="HitArea" parent="." instance=ExtResource("2_d4hbp")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_2g2vt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(1, -1)
+texture = ExtResource("3_nvthk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rm1ku")
+
+[node name="HealTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "100"
+
+[node name="Laser" parent="." instance=ExtResource("4_sarsx")]
+
+[connection signal="hurt" from="HitArea" to="." method="_on_hit_area_hurt"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]

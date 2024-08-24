@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvy7ue34244x"]
+
+[ext_resource type="Script" path="res://idea_ciosai/component/hurt_area.gd" id="1_jtttc"]
+
+[node name="HurtArea" type="Area2D"]
+script = ExtResource("1_jtttc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

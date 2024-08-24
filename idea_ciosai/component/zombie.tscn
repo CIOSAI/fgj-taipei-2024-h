@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://ksprtwrkw11"]
+
+[ext_resource type="Script" path="res://idea_ciosai/component/zombie.gd" id="1_lwdqc"]
+[ext_resource type="PackedScene" uid="uid://2se2hmou1tgn" path="res://idea_ciosai/component/hit_area.tscn" id="1_yt6l1"]
+[ext_resource type="PackedScene" uid="uid://bl3rriwvdqe7o" path="res://idea_ciosai/component/heal_area.tscn" id="2_2k7ev"]
+[ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="2_pjoos"]
+[ext_resource type="PackedScene" uid="uid://dvy7ue34244x" path="res://idea_ciosai/component/hurt_area.tscn" id="3_rmdhn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj204"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pv8aa"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5atm"]
+radius = 76.0592
+
+[node name="Zombie" type="CharacterBody2D"]
+collision_layer = 5
+script = ExtResource("1_lwdqc")
+gift = ExtResource("2_2k7ev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uj204")
+
+[node name="HitArea" parent="." instance=ExtResource("1_yt6l1")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_pv8aa")
+
+[node name="HurtArea" parent="." instance=ExtResource("3_rmdhn")]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_v5atm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.253314, 0.253314)
+texture = ExtResource("2_pjoos")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="hurt" from="HitArea" to="." method="_on_hit_area_hurt"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

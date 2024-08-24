@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0vcte2degdp4"]
+
+[ext_resource type="Script" path="res://idea_ciosai/structure/player.gd" id="1_gf1nj"]
+[ext_resource type="PackedScene" uid="uid://2se2hmou1tgn" path="res://idea_ciosai/component/hit_area.tscn" id="2_1cnqw"]
+[ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_n5l4g"]
+[ext_resource type="PackedScene" uid="uid://dmomaddwhnpbj" path="res://idea_ciosai/component/flame_thrower.tscn" id="4_rpoyk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_64mfo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rb3bh"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(172, 463)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_gf1nj")
+
+[node name="HitArea" parent="." instance=ExtResource("2_1cnqw")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_64mfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rb3bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.164549, 0.164549)
+texture = ExtResource("3_n5l4g")
+
+[node name="FlameThrower" parent="." instance=ExtResource("4_rpoyk")]
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "20"
+
+[connection signal="hurt" from="HitArea" to="." method="_on_hit_area_hurt"]
