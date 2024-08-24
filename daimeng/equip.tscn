@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqhy741j3snkm"]
+
+[ext_resource type="Script" path="res://daimeng/equip.gd" id="1_pamsl"]
+[ext_resource type="Texture2D" uid="uid://b6ubq8gv1q60e" path="res://daimeng/healthbar.png" id="2_10gdj"]
+[ext_resource type="Texture2D" uid="uid://d0k1sa8l0set8" path="res://daimeng/healthbar_under.png" id="2_l4cr5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7deid"]
+texture = ExtResource("2_l4cr5")
+
+[node name="Equip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+script = ExtResource("1_pamsl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 20.0
+
+[node name="ItemSlot" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemSlot2" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot2"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot2"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemSlot3" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot3"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot3"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemSlot4" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot4"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot4"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemSlot5" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot5"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot5"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ItemSlot6" type="PanelContainer" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_7deid")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemSlot6"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/ItemSlot6"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_10gdj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
