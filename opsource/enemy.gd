@@ -16,6 +16,8 @@ var rotating_radius: float = PI / 4
 func _ready() -> void:
 	##Call setter
 	type = type
+	if is_instance_valid(Global.player):
+		target = Global.player
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(target):
