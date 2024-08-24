@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://buojb641gpwnk"]
+[gd_scene load_steps=5 format=3 uid="uid://buojb641gpwnk"]
 
 [ext_resource type="Script" path="res://opsource/player.gd" id="1_by5le"]
+[ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_xc0pk"]
+[ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_o2xyc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efh8o"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_by5le")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" parent="." instance=ExtResource("2_xc0pk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_efh8o")
+
+[node name="Icon" type="Sprite2D" parent="Hurtbox"]
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("3_o2xyc")
