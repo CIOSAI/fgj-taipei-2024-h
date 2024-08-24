@@ -26,6 +26,7 @@ func shoot() -> void:
 	if is_instance_valid(target):
 		shoot_direction = (target.global_position - global_position).normalized()
 	var new_bullet: Bullet = bullet.instantiate()
+	new_bullet.damage = new_bullet.base_damage.duplicate(true)
 	new_bullet.shooter = get_parent()
 	for damage_modifier in damage_modifiers:
 		new_bullet.damage = damage_modifier.modify_damage(new_bullet.damage)

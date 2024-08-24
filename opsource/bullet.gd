@@ -1,7 +1,8 @@
 extends Area2D
 class_name Bullet
 
-@export var damage: DamageStats
+var damage: DamageStats
+@export var base_damage: DamageStats
 @export var penetrating: bool = false
 @export var life_time: float = 1.0:
 	set(new_time):
@@ -17,4 +18,15 @@ func _physics_process(delta: float) -> void:
 	life_time -= delta
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, 5, Color.BLACK)
+	var bullet_color: Color
+	if !base_damage.damage_typed:
+		bullet_color = Color.BURLYWOOD
+	else:
+		match base_damage.damage_type:
+			DamageStats.DamageType.WIND:
+				bullet_color = Color.SKY_BLUE
+			DamageStats.DamageType.ICE:
+				bullet_color = Color.CYAN
+			DamageStats.DamageType.FIRE:
+				bullet_color = Color.PALE_VIOLET_RED
+	draw_circle(Vector2.ZERO, 10, bullet_color)

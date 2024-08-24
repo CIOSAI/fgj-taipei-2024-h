@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://opsource/damage.gd" id="2_83fy0"]
 [ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_d4cda"]
 
-[sub_resource type="Resource" id="Resource_1q4gy"]
+[sub_resource type="Resource" id="Resource_0mqvj"]
 script = ExtResource("2_83fy0")
 damage = 0
-damage_typed = true
+damage_typed = false
 damage_type = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bvlj"]
@@ -15,7 +15,7 @@ size = Vector2(2, 2)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_0hlhd")
-damage = SubResource("Resource_1q4gy")
+base_damage = SubResource("Resource_0mqvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2bvlj")
