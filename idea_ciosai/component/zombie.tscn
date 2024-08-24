@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ksprtwrkw11"]
+[gd_scene load_steps=10 format=3 uid="uid://ksprtwrkw11"]
 
 [ext_resource type="Script" path="res://idea_ciosai/component/zombie.gd" id="1_lwdqc"]
 [ext_resource type="PackedScene" uid="uid://2se2hmou1tgn" path="res://idea_ciosai/component/hit_area.tscn" id="1_yt6l1"]
@@ -13,6 +13,10 @@ radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5atm"]
 radius = 76.0592
+
+[sub_resource type="Gradient" id="Gradient_0ldq4"]
+offsets = PackedFloat32Array(0, 0.686667, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.386667, 0.386667, 0.613333, 1, 1, 1, 0)
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 5
@@ -33,6 +37,7 @@ shape = SubResource("CircleShape2D_pv8aa")
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
+damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
 shape = SubResource("CircleShape2D_v5atm")
@@ -44,6 +49,22 @@ texture = ExtResource("2_pjoos")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+one_shot = true
+speed_scale = 5.0
+explosiveness = 0.96
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 80.81
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -720.0
+scale_amount_min = 0.0
+scale_amount_max = 21.21
+color_ramp = SubResource("Gradient_0ldq4")
 
 [connection signal="hurt" from="HitArea" to="." method="_on_hit_area_hurt"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

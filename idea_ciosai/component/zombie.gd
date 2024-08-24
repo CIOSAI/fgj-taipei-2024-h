@@ -13,11 +13,12 @@ var hp:float = 12 :
 
 func _process(delta):
 	if is_instance_valid(target):
-		velocity = (target.global_position-global_position).normalized()*30
+		velocity = (target.global_position-global_position).normalized()*50
 		move_and_slide()
 
 func _on_timer_timeout():
 	%HurtArea.attack()
+	%Particle.emitting = true
 
 func _on_hit_area_hurt(damage):
 	hp-=damage
