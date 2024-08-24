@@ -4,10 +4,14 @@ class_name HP
 var self_type: DamageStats.DamageType
 signal hp_updated(new_hp: int)
 
-var hp: int = 12:
+@export var init_hp: int
+var hp: int = init_hp:
 	set(new_hp):
 		hp = new_hp
 		hp_updated.emit(hp)
+
+func _ready():
+	hp = init_hp
 
 func take_damage(damage: DamageStats) -> void:
 	print_debug(damage.damage)

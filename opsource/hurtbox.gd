@@ -16,3 +16,8 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		if !area.penetrating:
 			area.queue_free()
+	if area is AttackBox:
+		var damage_to_take: DamageStats = area.damage
+		for damage_modifier in  damage_modifiers:
+			damage_to_take = damage_modifier.modify_damage(damage_to_take)
+		damage_taken.emit(area.damage)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b54qsf3ceaimv"]
+
+[ext_resource type="Script" path="res://opsource/attack_box.gd" id="1_rl7j3"]
+
+[node name="AttackBox" type="Area2D"]
+script = ExtResource("1_rl7j3")

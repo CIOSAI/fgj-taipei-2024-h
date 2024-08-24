@@ -23,6 +23,8 @@ bullet = ExtResource("2_b1st8")
 damage_modifiers = Array[ExtResource("3_li5aj")]([SubResource("Resource_gesgb"), SubResource("Resource_8dws5"), null])
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_h4m86")
