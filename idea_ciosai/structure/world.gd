@@ -2,6 +2,9 @@ extends Node2D
 
 @export var player_res:PackedScene
 @export var zombie_res:PackedScene
+@export var pickable_res:PackedScene
+@export var possible_items:Array[PackedScene]
+@export var possible_names:Array[String]
 
 var to_spawn:Array = []
 var to_clear:Array[Node2D] = []
@@ -9,6 +12,7 @@ var player
 
 func _ready():
 	set_up()
+	leave_gift(null, Vector2(200, 250))
 
 func set_up():
 	for entity in to_clear:
@@ -22,8 +26,12 @@ func set_up():
 	player.died.connect(set_up)
 
 func leave_gift(gift, v:Vector2):
-	var instance = gift.instantiate()
+	var instance = pickable_res.instantiate()
 	instance.global_position = v
+	var chosen:int = randi() % possible_items.size()
+	instance.item = possible_items[chosen]
+	instance.item_name = possible_names[chosen]
+	instance.picked.connect(func(picked_item): player.add_child(picked_item.instantiate()))
 	add_child(instance)
 
 func spawn_entity(subject:PackedScene, v:Vector2):
