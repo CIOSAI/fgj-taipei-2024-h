@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://clmqjeu4mq8t0"]
+
+[ext_resource type="Shader" path="res://idea_ciosai/component/spiral_transition.gdshader" id="1_fol2d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q17cn"]
+resource_local_to_scene = true
+shader = ExtResource("1_fol2d")
+shader_parameter/overlay_color = Color(0.966667, 0, 1, 1)
+shader_parameter/amount = null
+
+[node name="SpiralTransition" type="ColorRect"]
+material = SubResource("ShaderMaterial_q17cn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
