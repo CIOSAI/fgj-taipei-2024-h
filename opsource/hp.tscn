@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnbem0so0uutw"]
+
+[ext_resource type="Script" path="res://opsource/hp.gd" id="1_oxsqv"]
+
+[node name="HP" type="Node2D"]
+script = ExtResource("1_oxsqv")

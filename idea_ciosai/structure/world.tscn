@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4addwfxbrofh"]
+[gd_scene load_steps=8 format=3 uid="uid://c4addwfxbrofh"]
 
 [ext_resource type="Script" path="res://idea_ciosai/structure/world.gd" id="1_0pucd"]
 [ext_resource type="PackedScene" uid="uid://c0vcte2degdp4" path="res://idea_ciosai/structure/player.tscn" id="2_8iepg"]
 [ext_resource type="PackedScene" uid="uid://f8ooum2josgp" path="res://idea_ciosai/structure/boss.tscn" id="3_4rck6"]
 [ext_resource type="PackedScene" uid="uid://ksprtwrkw11" path="res://idea_ciosai/component/zombie.tscn" id="4_oks6n"]
+[ext_resource type="PackedScene" uid="uid://dueka182hm8n2" path="res://idea_ciosai/component/pickable.tscn" id="4_xybkx"]
+[ext_resource type="PackedScene" uid="uid://dmomaddwhnpbj" path="res://idea_ciosai/component/flame_thrower.tscn" id="5_ewg8h"]
+[ext_resource type="PackedScene" uid="uid://d2ptvnf1uvxef" path="res://idea_ciosai/component/friendly_laser.tscn" id="6_fhgeb"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0pucd")
 player_res = ExtResource("2_8iepg")
 zombie_res = ExtResource("4_oks6n")
+pickable_res = ExtResource("4_xybkx")
+possible_items = Array[PackedScene]([ExtResource("5_ewg8h"), ExtResource("6_fhgeb")])
+possible_names = Array[String](["Flame Thrower", "Laser"])
 
 [node name="Boss" parent="." instance=ExtResource("3_4rck6")]
 

@@ -1,19 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://buojb641gpwnk"]
+[gd_scene load_steps=15 format=3 uid="uid://buojb641gpwnk"]
 
 [ext_resource type="Script" path="res://opsource/player.gd" id="1_by5le"]
+[ext_resource type="PackedScene" uid="uid://dnldeiug12sqq" path="res://opsource/auto_canon.tscn" id="2_jkxhu"]
+[ext_resource type="Texture2D" uid="uid://brwxc8p6tya66" path="res://opsource/Player.png" id="2_x6ll4"]
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_xc0pk"]
-[ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_o2xyc"]
+[ext_resource type="Script" path="res://opsource/damage_modifier/damage_modifier.gd" id="4_p3tim"]
+[ext_resource type="Script" path="res://opsource/damage_modifier/increase_damage.gd" id="5_jeepf"]
+[ext_resource type="Script" path="res://opsource/damage_modifier/change_damage_type.gd" id="6_3oq2x"]
+
+[sub_resource type="Resource" id="Resource_bgfhp"]
+script = ExtResource("5_jeepf")
+increase_amount = 3
+
+[sub_resource type="Resource" id="Resource_hbwto"]
+script = ExtResource("6_3oq2x")
+change_to = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efh8o"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_1d2a2"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_wsate"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hqqqd"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ruvx"]
+_data = {
+"RESET": SubResource("Animation_wsate"),
+"idle": SubResource("Animation_1d2a2"),
+"walk": SubResource("Animation_hqqqd")
+}
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_by5le")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_x6ll4")
+hframes = 8
+
+[node name="AutoCanon" parent="." instance=ExtResource("2_jkxhu")]
+damage_modifiers = Array[ExtResource("4_p3tim")]([SubResource("Resource_bgfhp"), SubResource("Resource_hbwto")])
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_xc0pk")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_efh8o")
 
-[node name="Icon" type="Sprite2D" parent="Hurtbox"]
-scale = Vector2(0.105, 0.105)
-texture = ExtResource("3_o2xyc")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ruvx")
+}
