@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi00w1kyulrm5"]
+[gd_scene load_steps=3 format=3 uid="uid://bi00w1kyulrm5"]
 
 [ext_resource type="PackedScene" uid="uid://buojb641gpwnk" path="res://opsource/player.tscn" id="1_5d7sa"]
+[ext_resource type="PackedScene" uid="uid://ds4ujbmhxesq4" path="res://opsource/enemy.tscn" id="2_gh5ml"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5d7sa")]
 position = Vector2(180, 319)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gh5ml")]
+position = Vector2(551, 277)
+target = NodePath("../Player")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gh5ml")]
+position = Vector2(526, 357)
+target = NodePath("../Player")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gh5ml")]
+position = Vector2(509, 450)
+target = NodePath("../Player")
