@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ut7gglg8bqwj"
-path="res://.godot/imported/mobdrop.png-f8a66e92f0524f487cb5747fa47d6a13.ctex"
+uid="uid://v0onbaelnrrp"
+path="res://.godot/imported/creditsbutton_pressed.png-09449e781770439abe9e878de7d32c95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://daimeng/mobdrop.png"
-dest_files=["res://.godot/imported/mobdrop.png-f8a66e92f0524f487cb5747fa47d6a13.ctex"]
+source_file="res://daimeng/asset/creditsbutton_pressed.png"
+dest_files=["res://.godot/imported/creditsbutton_pressed.png-09449e781770439abe9e878de7d32c95.ctex"]
 
 [params]
 

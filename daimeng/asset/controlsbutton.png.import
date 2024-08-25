@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxwwv8do40s3q"
-path="res://.godot/imported/cloudmountain.jpeg-6b559aebb1bd63dab3fc47707d855f4b.ctex"
+uid="uid://dfglqu7vr20fi"
+path="res://.godot/imported/controlsbutton.png-19a81fbcfc24ad0b52287bd85523f8e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://daimeng/cloudmountain.jpeg"
-dest_files=["res://.godot/imported/cloudmountain.jpeg-6b559aebb1bd63dab3fc47707d855f4b.ctex"]
+source_file="res://daimeng/asset/controlsbutton.png"
+dest_files=["res://.godot/imported/controlsbutton.png-19a81fbcfc24ad0b52287bd85523f8e0.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqhy741j3snkm"]
 
 [ext_resource type="Script" path="res://daimeng/equip.gd" id="1_pamsl"]
-[ext_resource type="Texture2D" uid="uid://b6ubq8gv1q60e" path="res://daimeng/healthbar.png" id="2_10gdj"]
-[ext_resource type="Texture2D" uid="uid://d0k1sa8l0set8" path="res://daimeng/healthbar_under.png" id="2_l4cr5"]
+[ext_resource type="Texture2D" uid="uid://b6ubq8gv1q60e" path="res://daimeng/asset/healthbar.png" id="2_10gdj"]
+[ext_resource type="Texture2D" uid="uid://d0k1sa8l0set8" path="res://daimeng/asset/healthbar_under.png" id="2_l4cr5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7deid"]
 texture = ExtResource("2_l4cr5")
