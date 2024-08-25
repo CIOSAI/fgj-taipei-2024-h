@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kn74w4whj4a5"]
+[gd_scene load_steps=8 format=3 uid="uid://kn74w4whj4a5"]
 
 [ext_resource type="Script" path="res://opsource/bullet.gd" id="1_0hlhd"]
 [ext_resource type="Script" path="res://opsource/damage.gd" id="2_83fy0"]
 [ext_resource type="Texture2D" uid="uid://dmv5ru4qrky2a" path="res://icon.svg" id="3_d4cda"]
+[ext_resource type="Texture2D" uid="uid://dv3jn7ep667tl" path="res://idea_ciosai/component/dot.png" id="4_t6nqa"]
 
 [sub_resource type="Resource" id="Resource_0mqvj"]
 script = ExtResource("2_83fy0")
@@ -13,6 +14,10 @@ damage_type = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bvlj"]
 size = Vector2(2, 2)
 
+[sub_resource type="Curve" id="Curve_prtxf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.53509, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
@@ -20,9 +25,30 @@ script = ExtResource("1_0hlhd")
 base_damage = SubResource("Resource_0mqvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_2bvlj")
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(5, 4)
 texture = ExtResource("3_d4cda")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+amount = 32
+speed_scale = 8.0
+texture = ExtResource("4_t6nqa")
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_prtxf")
+
+[node name="LifeTimer" type="Timer" parent="."]
+process_mode = 3
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
