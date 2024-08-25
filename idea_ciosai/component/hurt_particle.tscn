@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvlxiktk7n73b"]
+
+[ext_resource type="Texture2D" uid="uid://dv3jn7ep667tl" path="res://idea_ciosai/component/dot.png" id="1_brfw0"]
+
+[sub_resource type="Curve" id="Curve_vmqk5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0988372, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_52s5k"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.526667)
+colors = PackedColorArray(0.995926, 0.865107, 0, 1, 1, 1, 1, 1)
+
+[node name="HurtParticle" type="CPUParticles2D"]
+texture_filter = 1
+emitting = false
+amount = 16
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+texture = ExtResource("1_brfw0")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 111.12
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 6.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_vmqk5")
+color_initial_ramp = SubResource("Gradient_52s5k")
