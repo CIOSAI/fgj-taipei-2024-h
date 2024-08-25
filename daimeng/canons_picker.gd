@@ -9,3 +9,4 @@ func _on_area_entered(area: Area2D) -> void:
 		for canon in lagacy_canons:
 			area.get_parent().append_canon(canon)
 		area.get_parent().append_canon(new_canon)
+		queue_free()

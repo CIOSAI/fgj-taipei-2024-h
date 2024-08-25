@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://buojb641gpwnk"]
+[gd_scene load_steps=21 format=3 uid="uid://buojb641gpwnk"]
 
 [ext_resource type="Script" path="res://opsource/player.gd" id="1_by5le"]
 [ext_resource type="PackedScene" uid="uid://clrq0mh0nxkgn" path="res://daimeng/hp.tscn" id="2_j3hkg"]
 [ext_resource type="PackedScene" uid="uid://dnldeiug12sqq" path="res://opsource/auto_canon.tscn" id="2_jkxhu"]
 [ext_resource type="PackedScene" uid="uid://dnbem0so0uutw" path="res://opsource/hp.tscn" id="2_m6b8f"]
+[ext_resource type="PackedScene" uid="uid://cg5vpl44lphlg" path="res://opsource/canons_picker.tscn" id="2_ujuyd"]
 [ext_resource type="Texture2D" uid="uid://brwxc8p6tya66" path="res://opsource/Player.png" id="2_x6ll4"]
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_xc0pk"]
 [ext_resource type="Script" path="res://opsource/damage_modifier/damage_modifier.gd" id="4_p3tim"]
@@ -18,6 +19,9 @@ increase_amount = 3
 [sub_resource type="Resource" id="Resource_hbwto"]
 script = ExtResource("6_3oq2x")
 change_to = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1suf1"]
+radius = 69.3758
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52wpm"]
 radius = 334.834
@@ -85,6 +89,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_by5le")
+canon_picker_res = ExtResource("2_ujuyd")
 canon_template = ExtResource("2_jkxhu")
 
 [node name="Healthbar" parent="." instance=ExtResource("2_j3hkg")]
@@ -107,9 +112,11 @@ hframes = 8
 damage_modifiers = Array[ExtResource("4_p3tim")]([SubResource("Resource_bgfhp"), SubResource("Resource_hbwto")])
 
 [node name="CanonPickerAccepter" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-monitorable = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanonPickerAccepter"]
+shape = SubResource("CircleShape2D_1suf1")
 
 [node name="MoneyAccepter" type="Area2D" parent="."]
 collision_layer = 0

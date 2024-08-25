@@ -17,6 +17,10 @@ var rotating_radius: float = PI / 4
 func _ready() -> void:
 	##Call setter
 	type = type
+	update_target()
+	Global.player_updated.connect(update_target)
+
+func update_target():
 	if is_instance_valid(Global.player):
 		target = Global.player
 		print(target)
@@ -29,7 +33,6 @@ func _physics_process(_delta: float) -> void:
 		rotating_radius += randf_range(- PI / 8, PI / 8)
 	velocity = moving_direction * movement_speed
 	move_and_slide()
-	print(1)
 	sprite_2d.flip_h = velocity.x < 0
 
 func _on_sprite_update_timer_timeout() -> void:

@@ -3,6 +3,7 @@ class_name Player
 
 signal died
 
+@export var canon_picker_res: PackedScene
 @export var canon_template: PackedScene
 const MAX_SPEED: float = 200.0
 const ACCE: float = 800.0
@@ -38,7 +39,7 @@ func append_canon(canon: AutoCanon):
 	add_child(canon)
 
 func leave_lagacy() -> void:
-	var picker_to_leave:= CanonPicker.new()
+	var picker_to_leave:= canon_picker_res.instantiate()
 	for child in get_children():
 		if child is AutoCanon:
 			child.time_gap_between_shoot *= 1.7
@@ -64,4 +65,5 @@ func leave_lagacy() -> void:
 	my_canon.damage_modifiers.append(IncreaseDamage.new(my_money))
 	
 	picker_to_leave.new_canon = my_canon
+	picker_to_leave.global_position = global_position
 	get_tree().current_scene.add_child(picker_to_leave)

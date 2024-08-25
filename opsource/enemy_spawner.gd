@@ -11,10 +11,6 @@ class_name EnemySpawner
 func _ready() -> void:
 	spawn()
 	spawn()
-	spawn()
-	spawn()
-	spawn()
-	spawn()
 
 func spawn() -> void:
 	var spawn_position:= Vector2.ONE.rotated(randf_range(0.0, TAU)) * randf_range(safe_inner_radius, danger_outer_radius)
