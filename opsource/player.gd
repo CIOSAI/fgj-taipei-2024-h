@@ -32,6 +32,7 @@ func _on_hp_hp_updated(new_hp):
 	if new_hp<=0:
 		died.emit()
 		Global.player_died.emit()
+		leave_lagacy()
 
 func append_canon(canon: AutoCanon):
 	add_child(canon)
@@ -43,7 +44,7 @@ func leave_lagacy() -> void:
 			child.time_gap_between_shoot *= 1.7
 			picker_to_leave.lagacy_canons.append(child.duplicate())
 	
-	var my_canon:= canon_template.instantiate()
+	var my_canon: AutoCanon = canon_template.instantiate()
 	var my_money: int = 0
 	var top_type: int = 0
 	var top_type_money: int = 0
@@ -59,4 +60,8 @@ func leave_lagacy() -> void:
 	
 	if top_money_occuered_times > 1:
 		top_type = 0
-	my_canon.bullet.base_damage.damage_type = top_type 
+	my_canon.damage_modifiers.append(ChangeDamageType.new(top_type))
+	my_canon.damage_modifiers.append(IncreaseDamage.new(my_money))
+	
+	picker_to_leave.new_canon = my_canon
+	get_tree().current_scene.add_child(picker_to_leave)

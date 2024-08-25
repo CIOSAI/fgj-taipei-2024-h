@@ -2,4 +2,10 @@ extends Area2D
 class_name AttackBox
 
 @export var base_damage:DamageStats
-@onready var damage: DamageStats = base_damage.duplicate()
+@export var damage_modifiers: Array[DamageModifier]
+var damage: DamageStats:
+	get:
+		var new_damage: DamageStats = base_damage.duplicate()
+		for damage_modifier: DamageModifier in damage_modifiers:
+			new_damage = damage_modifier.modify_damage(new_damage)
+		return new_damage

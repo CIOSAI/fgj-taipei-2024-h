@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds4ujbmhxesq4"]
+[gd_scene load_steps=15 format=3 uid="uid://ds4ujbmhxesq4"]
 
 [ext_resource type="Script" path="res://opsource/enemy.gd" id="1_frx04"]
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_f18s3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bwgkrevhv67ro" path="res://opsource/mobs.png" id="4_6kwew"]
 [ext_resource type="PackedScene" uid="uid://b54qsf3ceaimv" path="res://opsource/attack_box.tscn" id="6_gr3cn"]
 [ext_resource type="Script" path="res://opsource/damage.gd" id="7_kiokv"]
+[ext_resource type="Script" path="res://opsource/damage_modifier/damage_modifier.gd" id="8_4dks8"]
+[ext_resource type="Script" path="res://opsource/damage_modifier/increase_damage.gd" id="9_j6b0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieygw"]
 size = Vector2(80, 84)
@@ -14,11 +16,14 @@ size = Vector2(80, 84)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbcxc"]
 radius = 26.4764
 
-[sub_resource type="Resource" id="Resource_byhie"]
+[sub_resource type="Resource" id="Resource_ojhfn"]
 script = ExtResource("7_kiokv")
-damage = 1
-damage_typed = true
+damage = 0
 damage_type = 0
+
+[sub_resource type="Resource" id="Resource_m31sf"]
+script = ExtResource("9_j6b0r")
+increase_amount = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rorm3"]
 radius = 47.0425
@@ -59,7 +64,8 @@ autostart = true
 [node name="AttackBox" parent="." instance=ExtResource("6_gr3cn")]
 collision_layer = 4
 collision_mask = 0
-damage = SubResource("Resource_byhie")
+base_damage = SubResource("Resource_ojhfn")
+damage_modifiers = Array[ExtResource("8_4dks8")]([SubResource("Resource_m31sf")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
 unique_name_in_owner = true
