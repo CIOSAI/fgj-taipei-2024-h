@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c3tomm80jw2ky"]
+[gd_scene load_steps=20 format=4 uid="uid://c3tomm80jw2ky"]
 
 [ext_resource type="Script" path="res://daimeng/title.gd" id="1_ujo3o"]
 [ext_resource type="Texture2D" uid="uid://dxwwv8do40s3q" path="res://daimeng/asset/cloudmountain.jpeg" id="3_6bwn3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://4sxnpmdh1gu8" path="res://daimeng/asset/exitbutton.png" id="7_y652f"]
 [ext_resource type="Texture2D" uid="uid://v0onbaelnrrp" path="res://daimeng/asset/creditsbutton_pressed.png" id="9_v8juh"]
 [ext_resource type="Texture2D" uid="uid://11i8w7q468ej" path="res://daimeng/asset/exitbutton_pressed.png" id="11_45e7e"]
+[ext_resource type="FontFile" uid="uid://ptyy56yxqljf" path="res://daimeng/asset/NotoSansTC-VariableFont_wght.ttf" id="14_ex2cs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nffoh"]
 texture = ExtResource("3_nd16h")
@@ -144,6 +145,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a7o6f")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CreditPanel/Panel"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("14_ex2cs")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[font_size=60]製作人員[/font_size]
@@ -172,6 +174,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a7o6f")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ControlPanel/Panel"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("14_ex2cs")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[font_size=60]操​作說​明​[/font_size]
