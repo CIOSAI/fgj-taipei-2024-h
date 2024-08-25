@@ -10,13 +10,19 @@ class_name EnemySpawner
 
 func _ready() -> void:
 	spawn()
-	spawn()
-	spawn()
+	await get_tree().create_timer(1).timeout
 	spawn()
 	await get_tree().create_timer(1).timeout
 	spawn()
+	await get_tree().create_timer(1).timeout
 	spawn()
+	await get_tree().create_timer(1).timeout
 	spawn()
+	await get_tree().create_timer(1).timeout
+	spawn()
+	await get_tree().create_timer(1).timeout
+	spawn()
+	await get_tree().create_timer(1).timeout
 	spawn()
 
 func spawn() -> void:
