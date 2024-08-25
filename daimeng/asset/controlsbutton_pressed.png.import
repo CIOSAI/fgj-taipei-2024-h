@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx8h14877uimh"
-path="res://.godot/imported/creditsbutton.png-f7d317d7f721c74ec2055abaac9a972d.ctex"
+uid="uid://qbolofrc4xb0"
+path="res://.godot/imported/controlsbutton_pressed.png-8e347df76489cbfc3be47b336cecbf4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://daimeng/creditsbutton.png"
-dest_files=["res://.godot/imported/creditsbutton.png-f7d317d7f721c74ec2055abaac9a972d.ctex"]
+source_file="res://daimeng/asset/controlsbutton_pressed.png"
+dest_files=["res://.godot/imported/controlsbutton_pressed.png-8e347df76489cbfc3be47b336cecbf4a.ctex"]
 
 [params]
 

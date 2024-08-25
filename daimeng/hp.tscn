@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://clrq0mh0nxkgn"]
 
-[ext_resource type="Texture2D" uid="uid://b6ubq8gv1q60e" path="res://daimeng/healthbar.png" id="1_hve8l"]
-[ext_resource type="Texture2D" uid="uid://d0k1sa8l0set8" path="res://daimeng/healthbar_under.png" id="2_awfd7"]
+[ext_resource type="Texture2D" uid="uid://b6ubq8gv1q60e" path="res://daimeng/asset/healthbar.png" id="1_hve8l"]
+[ext_resource type="Texture2D" uid="uid://d0k1sa8l0set8" path="res://daimeng/asset/healthbar_under.png" id="2_awfd7"]
 [ext_resource type="Script" path="res://daimeng/healthbar.gd" id="2_y6s21"]
-[ext_resource type="Texture2D" uid="uid://d4u3bev8lo46" path="res://daimeng/healthbar_progress.png" id="3_i0kro"]
+[ext_resource type="Texture2D" uid="uid://d4u3bev8lo46" path="res://daimeng/asset/healthbar_progress.png" id="3_i0kro"]
 
 [node name="Healthbar" type="Control"]
 modulate = Color(1, 1, 1, 0.470588)

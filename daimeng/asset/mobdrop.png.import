@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0k1sa8l0set8"
-path="res://.godot/imported/healthbar_under.png-85c20d2661f7da0d222451e34399c31e.ctex"
+uid="uid://ut7gglg8bqwj"
+path="res://.godot/imported/mobdrop.png-bcb6b0d5f3aa75a6988f940b57915887.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://daimeng/healthbar_under.png"
-dest_files=["res://.godot/imported/healthbar_under.png-85c20d2661f7da0d222451e34399c31e.ctex"]
+source_file="res://daimeng/asset/mobdrop.png"
+dest_files=["res://.godot/imported/mobdrop.png-bcb6b0d5f3aa75a6988f940b57915887.ctex"]
 
 [params]
 
