@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cblpsvadnrkme"]
+
+[ext_resource type="Script" path="res://opsource/money.gd" id="1_psmo7"]
+[ext_resource type="Texture2D" uid="uid://ut7gglg8bqwj" path="res://daimeng/mobdrop.png" id="1_uu4rr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv3dt"]
+size = Vector2(50, 40)
+
+[node name="Money" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_psmo7")
+
+[node name="Mobdrop" type="Sprite2D" parent="."]
+texture = ExtResource("1_uu4rr")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bv3dt")
