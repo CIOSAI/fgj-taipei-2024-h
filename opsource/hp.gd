@@ -14,7 +14,6 @@ func _ready():
 	hp = init_hp
 
 func take_damage(damage: DamageStats) -> void:
-	print_debug(damage.damage)
 	if !damage.damage_typed || self_type == damage.damage_type:
 		hp -= damage.damage
 	elif (self_type + 1) % 3 == damage.damage_type:

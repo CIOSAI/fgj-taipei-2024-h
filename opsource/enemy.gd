@@ -12,6 +12,7 @@ enum EnemyType{NONE, ICE, FIRE, WIND}
 var moving_direction:= Vector2.ZERO
 var rotating_radius: float = PI / 4
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var attack_box: AttackBox = $AttackBox
 
 func _ready() -> void:
 	##Call setter

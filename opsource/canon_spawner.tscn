@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb15rh83vfedl"]
+
+[ext_resource type="Script" path="res://opsource/canon_spawner.gd" id="1_g2jnq"]
+
+[node name="CanonSpawner" type="Node2D"]
+script = ExtResource("1_g2jnq")
