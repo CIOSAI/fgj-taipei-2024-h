@@ -11,11 +11,17 @@ class_name EnemySpawner
 func _ready() -> void:
 	spawn()
 	spawn()
+	spawn()
+	spawn()
+	await get_tree().create_timer(1).timeout
+	spawn()
+	spawn()
+	spawn()
+	spawn()
 
 func spawn() -> void:
 	var spawn_position:= Vector2.ONE.rotated(randf_range(0.0, TAU)) * randf_range(safe_inner_radius, danger_outer_radius)
 	var new_enemy: Enemy = enemy.instantiate()
-	print_debug(new_enemy)
 	new_enemy.type = spawner_type
 	new_enemy.movement_speed = enemy_speed
 	new_enemy.set_attack(enemy_attack)

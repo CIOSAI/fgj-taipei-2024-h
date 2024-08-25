@@ -14,5 +14,5 @@ func spawn_player():
 	var instance:Player = player_res.instantiate()
 	instance.global_position = %PlayerSpawnPoint.global_position
 	instance.died.connect(_on_player_died)
-	call_deferred("add_child", instance)
+	add_child.call_deferred(instance)
 	#add_child(instance)
