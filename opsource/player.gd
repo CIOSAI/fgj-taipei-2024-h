@@ -66,4 +66,4 @@ func leave_lagacy() -> void:
 	
 	picker_to_leave.new_canon = my_canon
 	picker_to_leave.global_position = global_position
-	get_tree().current_scene.add_child(picker_to_leave)
+	get_tree().current_scene.add_child.call_deferred(picker_to_leave)

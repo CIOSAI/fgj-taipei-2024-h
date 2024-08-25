@@ -23,7 +23,6 @@ func _ready() -> void:
 func update_target():
 	if is_instance_valid(Global.player):
 		target = Global.player
-		print(target)
 
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(target):
