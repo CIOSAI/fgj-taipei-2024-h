@@ -38,6 +38,7 @@ func _on_sprite_update_timer_timeout() -> void:
 	sprite_2d.frame = (sprite_2d.frame + 4) % 8
 
 func _on_hp_hp_updated(new_hp: int) -> void:
+	%HurtAnim.play("default")
 	if new_hp <= 0:
 		queue_free()
 

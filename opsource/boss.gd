@@ -15,7 +15,7 @@ var spawn_count: int = 0
 
 func _ready():
 	enemy_spawner.spawner_type = boss_type
-	$Mobs.frame_coords.x = boss_type
+	$Sprite2D.frame_coords.x = boss_type
 
 func _on_timer_timeout() -> void:
 	enemy_spawner.enemy_attack = mob_attack_init + mob_attack_increase * spawn_count
@@ -23,6 +23,7 @@ func _on_timer_timeout() -> void:
 	timer.start(clampi(min_spawn_gap, max_spawn_gap, max_spawn_gap - spawn_gap_decrease * spawn_count))
 
 func _on_hp_hp_updated(new_hp):
+	%HurtAnim.play("default")
 	if new_hp<=0:
 		queue_free()
 		Global.boss_defeated.emit()

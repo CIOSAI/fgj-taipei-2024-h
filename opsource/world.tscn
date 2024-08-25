@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhlelwafidei1"]
+[gd_scene load_steps=8 format=3 uid="uid://bhlelwafidei1"]
 
 [ext_resource type="Script" path="res://opsource/test_scene.gd" id="1_uimrf"]
 [ext_resource type="PackedScene" uid="uid://buojb641gpwnk" path="res://opsource/player.tscn" id="2_5wjgi"]
 [ext_resource type="PackedScene" uid="uid://c0f333afgsuy0" path="res://opsource/boss.tscn" id="3_pb3ei"]
+[ext_resource type="AudioStream" uid="uid://cp1a542j1e4wl" path="res://idea_ciosai/asset/player_defeat.ogg" id="4_k7w0p"]
+[ext_resource type="PackedScene" uid="uid://clmqjeu4mq8t0" path="res://idea_ciosai/component/spiral_transition.tscn" id="4_v48j2"]
+[ext_resource type="Shader" path="res://idea_ciosai/component/spiral_transition.gdshader" id="5_bcp36"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4cc7"]
+resource_local_to_scene = true
+shader = ExtResource("5_bcp36")
+shader_parameter/overlay_color = Color(0, 0, 0, 1)
+shader_parameter/amount = 0.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_uimrf")
@@ -29,6 +38,12 @@ unique_name_in_owner = true
 position = Vector2(1006, 786)
 
 [node name="Camera2D" type="Camera2D" parent="Camera"]
+
+[node name="Post" type="CanvasLayer" parent="."]
+
+[node name="SpiralTransition" parent="Post" instance=ExtResource("4_v48j2")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_o4cc7")
 
 [node name="Victory" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -73,5 +88,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 46
 text = "Back to title"
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_k7w0p")
 
 [connection signal="pressed" from="Victory/Control/Back" to="." method="_on_back_pressed"]

@@ -1,15 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds4ujbmhxesq4"]
+[gd_scene load_steps=19 format=3 uid="uid://ds4ujbmhxesq4"]
 
 [ext_resource type="Script" path="res://opsource/enemy.gd" id="1_frx04"]
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_f18s3"]
 [ext_resource type="PackedScene" uid="uid://clrq0mh0nxkgn" path="res://daimeng/hp.tscn" id="2_gxw51"]
 [ext_resource type="PackedScene" uid="uid://dnbem0so0uutw" path="res://opsource/hp.tscn" id="3_hbo00"]
 [ext_resource type="Texture2D" uid="uid://bwgkrevhv67ro" path="res://opsource/mobs.png" id="4_6kwew"]
+[ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="5_akl51"]
 [ext_resource type="Script" path="res://opsource/attack_box.gd" id="6_6my2k"]
 [ext_resource type="Script" path="res://opsource/damage.gd" id="7_kiokv"]
+[ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="9_c5e1h"]
+[ext_resource type="AudioStream" uid="uid://sd2pi4hhyixb" path="res://idea_ciosai/asset/enemy_hurt.ogg" id="10_njb80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieygw"]
 size = Vector2(80, 84)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caxup"]
+resource_local_to_scene = true
+shader = ExtResource("5_akl51")
+shader_parameter/amount = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbcxc"]
 radius = 26.4764
@@ -21,6 +29,81 @@ damage_type = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rorm3"]
 radius = 47.0425
+
+[sub_resource type="Animation" id="Animation_a28f8"]
+resource_name = "default"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s58rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68llu"]
+_data = {
+"RESET": SubResource("Animation_s58rt"),
+"default": SubResource("Animation_a28f8")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 5
@@ -44,6 +127,7 @@ shape = SubResource("RectangleShape2D_ieygw")
 init_hp = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_caxup")
 texture = ExtResource("4_6kwew")
 hframes = 4
 vframes = 2
@@ -64,6 +148,17 @@ base_damage = SubResource("Resource_ojhfn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_rorm3")
+
+[node name="HurtAnim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_68llu")
+}
+
+[node name="HurtParticle" parent="." instance=ExtResource("9_c5e1h")]
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_njb80")
 
 [connection signal="damage_taken" from="Hurtbox" to="HP" method="take_damage"]
 [connection signal="hp_updated" from="HP" to="." method="_on_hp_hp_updated"]

@@ -30,12 +30,14 @@ func _input(event: InputEvent) -> void:
 
 func _on_hp_hp_updated(new_hp):
 	%Healthbar.set_hp(new_hp)
+	%HurtAnim.play("default")
 	if new_hp<=0:
 		died.emit()
 		leave_lagacy()
 		Global.player_died.emit()
 
 func append_canon(canon: AutoCanon):
+	%PickedSound.play()
 	add_child.call_deferred(canon)
 
 func leave_lagacy() -> void:

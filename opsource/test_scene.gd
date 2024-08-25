@@ -18,9 +18,18 @@ func _process(delta):
 		%Camera.global_position = Global.player.global_position
 
 func _on_player_died():
+	%PlayerDeathSound.play()
 	Global.player.queue_free()
-	await create_tween().tween_interval(1).finished
-	spawn_player()
+	var tw = create_tween()
+	tw.tween_property(
+		%SpiralTransition.material, "shader_parameter/amount",
+		1, 1
+	)
+	tw.tween_callback(spawn_player)
+	tw.tween_property(
+		%SpiralTransition.material, "shader_parameter/amount",
+		0, .3
+	)
 
 func spawn_player():
 	var instance:Player = player_res.instantiate()
