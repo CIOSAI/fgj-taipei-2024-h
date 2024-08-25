@@ -10,6 +10,7 @@ func _ready():
 	Global.boss_defeated.connect(func():
 		need_to_defeat -= 1
 		if need_to_defeat <= 0:
+			get_tree().paused = true
 			%Victory.visible = true
 	)
 

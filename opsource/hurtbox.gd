@@ -22,3 +22,15 @@ func _on_area_entered(area: Area2D) -> void:
 		for damage_modifier in  damage_modifiers:
 			damage_to_take = damage_modifier.modify_damage(damage_to_take)
 		damage_taken.emit(area.damage)
+		%Timer.start()
+
+func _on_timer_timeout():
+	var areas = get_overlapping_areas().filter(func(area): return area is AttackBox)
+	if areas.is_empty():
+		%Timer.stop()
+	else:
+		var area = areas[0]
+		var damage_to_take: DamageStats = area.damage
+		for damage_modifier in  damage_modifiers:
+			damage_to_take = damage_modifier.modify_damage(damage_to_take)
+		damage_taken.emit(area.damage)

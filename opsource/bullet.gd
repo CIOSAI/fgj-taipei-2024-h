@@ -29,7 +29,7 @@ func _draw() -> void:
 		DamageStats.DamageType.FIRE:
 			bullet_color = Color.PALE_VIOLET_RED
 	draw_circle(Vector2.ZERO, 10, bullet_color)
-	%Particles.color = bullet_color
+	#%Particles.color = bullet_color
 
 func deactivate() -> void:
 	queue_free()

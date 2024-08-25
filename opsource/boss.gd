@@ -20,6 +20,7 @@ func _ready():
 func _on_timer_timeout() -> void:
 	enemy_spawner.enemy_attack = mob_attack_init + mob_attack_increase * spawn_count
 	enemy_spawner.spawn()
+	spawn_count += 1
 	timer.start(clampi(min_spawn_gap, max_spawn_gap, max_spawn_gap - spawn_gap_decrease * spawn_count))
 
 func _on_hp_hp_updated(new_hp):
