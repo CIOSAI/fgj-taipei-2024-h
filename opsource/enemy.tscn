@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="5_akl51"]
 [ext_resource type="Script" path="res://opsource/attack_box.gd" id="6_6my2k"]
 [ext_resource type="Script" path="res://opsource/damage.gd" id="7_kiokv"]
-[ext_resource type="PackedScene" path="res://idea_ciosai/component/hurt_particle.tscn" id="9_c5e1h"]
+[ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="9_c5e1h"]
 [ext_resource type="AudioStream" uid="uid://sd2pi4hhyixb" path="res://idea_ciosai/asset/enemy_hurt.ogg" id="10_njb80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieygw"]

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://opsource/damage_modifier/change_damage_type.gd" id="6_3oq2x"]
 [ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="6_77rmi"]
 [ext_resource type="Script" path="res://opsource/money_accepter.gd" id="9_54t3l"]
-[ext_resource type="PackedScene" path="res://idea_ciosai/component/hurt_particle.tscn" id="13_7krvs"]
+[ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="13_7krvs"]
 [ext_resource type="AudioStream" uid="uid://xfj26binwoxn" path="res://idea_ciosai/asset/player_hurt.ogg" id="14_tk075"]
 [ext_resource type="AudioStream" uid="uid://cph5vdwqostxr" path="res://idea_ciosai/asset/item_picked_up.ogg" id="15_p8d8t"]
 
