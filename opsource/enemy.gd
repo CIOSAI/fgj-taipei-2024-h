@@ -19,8 +19,9 @@ func _ready() -> void:
 	type = type
 	if is_instance_valid(Global.player):
 		target = Global.player
+		print(target)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_instance_valid(target):
 		moving_direction = - (global_position - target.global_position).normalized()
 	else:
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		rotating_radius += randf_range(- PI / 8, PI / 8)
 	velocity = moving_direction * movement_speed
 	move_and_slide()
+	print(1)
 	sprite_2d.flip_h = velocity.x < 0
 
 func _on_sprite_update_timer_timeout() -> void:
@@ -36,3 +38,7 @@ func _on_sprite_update_timer_timeout() -> void:
 func _on_hp_hp_updated(new_hp: int) -> void:
 	if new_hp <= 0:
 		queue_free()
+
+func set_attack(attack: int) -> void:
+	await ready
+	attack_box.damage_modifiers.append(IncreaseDamage.new(attack))

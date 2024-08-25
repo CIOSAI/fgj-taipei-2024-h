@@ -31,8 +31,8 @@ func _on_hp_hp_updated(new_hp):
 	%Healthbar.set_hp(new_hp)
 	if new_hp<=0:
 		died.emit()
-		Global.player_died.emit()
 		leave_lagacy()
+		Global.player_died.emit()
 
 func append_canon(canon: AutoCanon):
 	add_child(canon)

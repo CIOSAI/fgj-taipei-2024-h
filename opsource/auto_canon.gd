@@ -13,7 +13,7 @@ func _ready() -> void:
 	timer.start(time_gap_between_shoot)
 
 func shoot() -> void:
-	var nearest_target_distance:= 9999
+	var nearest_target_distance: float = 9999
 	for area in area_2d.get_overlapping_areas():
 		if area.get_parent() == get_parent():
 			continue
