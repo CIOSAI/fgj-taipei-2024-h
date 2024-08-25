@@ -1,8 +1,7 @@
 extends Resource
 class_name DamageStats
 
-enum DamageType{WIND, FIRE, ICE}
+enum DamageType{NONE, ICE, FIRE, WIND}
 
 @export var damage: int = 0
-@export var damage_typed: bool = true
-@export var damage_type: DamageType = DamageType.WIND
+@export var damage_type: DamageType = DamageType.NONE

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://buojb641gpwnk"]
+[gd_scene load_steps=19 format=3 uid="uid://buojb641gpwnk"]
 
 [ext_resource type="Script" path="res://opsource/player.gd" id="1_by5le"]
 [ext_resource type="PackedScene" uid="uid://clrq0mh0nxkgn" path="res://daimeng/hp.tscn" id="2_j3hkg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://opsource/damage_modifier/damage_modifier.gd" id="4_p3tim"]
 [ext_resource type="Script" path="res://opsource/damage_modifier/increase_damage.gd" id="5_jeepf"]
 [ext_resource type="Script" path="res://opsource/damage_modifier/change_damage_type.gd" id="6_3oq2x"]
+[ext_resource type="Script" path="res://opsource/money_accepter.gd" id="9_54t3l"]
 
 [sub_resource type="Resource" id="Resource_bgfhp"]
 script = ExtResource("5_jeepf")
@@ -17,6 +18,9 @@ increase_amount = 3
 [sub_resource type="Resource" id="Resource_hbwto"]
 script = ExtResource("6_3oq2x")
 change_to = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52wpm"]
+radius = 334.834
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aakfo"]
 radius = 27.0
@@ -81,6 +85,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_by5le")
+canon_template = ExtResource("2_jkxhu")
 
 [node name="Healthbar" parent="." instance=ExtResource("2_j3hkg")]
 unique_name_in_owner = true
@@ -101,6 +106,28 @@ hframes = 8
 [node name="AutoCanon" parent="." instance=ExtResource("2_jkxhu")]
 damage_modifiers = Array[ExtResource("4_p3tim")]([SubResource("Resource_bgfhp"), SubResource("Resource_hbwto")])
 
+[node name="CanonPickerAccepter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="MoneyAccepter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("9_54t3l")
+
+[node name="MoneyDetector" type="Area2D" parent="MoneyAccepter"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoneyAccepter/MoneyDetector"]
+shape = SubResource("CircleShape2D_52wpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoneyAccepter"]
+shape = SubResource("CapsuleShape2D_aakfo")
+
 [node name="Hurtbox" parent="." instance=ExtResource("2_xc0pk")]
 collision_layer = 0
 collision_mask = 4
@@ -114,4 +141,6 @@ libraries = {
 }
 
 [connection signal="hp_updated" from="HP" to="." method="_on_hp_hp_updated"]
+[connection signal="area_entered" from="MoneyAccepter" to="MoneyAccepter" method="_on_area_entered"]
+[connection signal="area_entered" from="MoneyAccepter/MoneyDetector" to="MoneyAccepter" method="_on_money_detector_area_entered"]
 [connection signal="damage_taken" from="Hurtbox" to="HP" method="take_damage"]

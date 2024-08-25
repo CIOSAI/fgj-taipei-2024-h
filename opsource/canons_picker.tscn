@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg5vpl44lphlg"]
+
+[ext_resource type="Script" path="res://daimeng/canons_picker.gd" id="1_wvvxh"]
+
+[node name="CanonsPicker" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_wvvxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Old" type="Node2D" parent="."]
+
+[node name="New" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
