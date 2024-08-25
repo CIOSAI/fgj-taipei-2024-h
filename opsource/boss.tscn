@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="3_qt16e"]
 [ext_resource type="PackedScene" uid="uid://dnbem0so0uutw" path="res://opsource/hp.tscn" id="3_xgi36"]
 [ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="6_17we8"]
-[ext_resource type="Texture2D" uid="uid://bwgkrevhv67ro" path="res://opsource/mobs.png" id="6_fssjv"]
 [ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="7_37u5n"]
+[ext_resource type="Texture2D" uid="uid://dc2rjjfupto1o" path="res://opsource/boss.png" id="7_w6168"]
 [ext_resource type="AudioStream" uid="uid://sd2pi4hhyixb" path="res://idea_ciosai/asset/enemy_hurt.ogg" id="9_ihoke"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhh06"]
@@ -121,9 +121,10 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 material = SubResource("ShaderMaterial_fdf3m")
 scale = Vector2(2, 2)
-texture = ExtResource("6_fssjv")
+texture = ExtResource("7_w6168")
 hframes = 4
 vframes = 2
 
