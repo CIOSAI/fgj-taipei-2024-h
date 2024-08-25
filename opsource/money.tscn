@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cblpsvadnrkme"]
 
 [ext_resource type="Script" path="res://opsource/money.gd" id="1_psmo7"]
-[ext_resource type="Texture2D" uid="uid://ut7gglg8bqwj" path="res://daimeng/mobdrop.png" id="1_uu4rr"]
+[ext_resource type="Texture2D" uid="uid://ut7gglg8bqwj" path="res://daimeng/asset/mobdrop.png" id="1_uu4rr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv3dt"]
 size = Vector2(50, 40)

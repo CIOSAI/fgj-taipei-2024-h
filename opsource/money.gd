@@ -5,7 +5,7 @@ class_name Money
 	set(new_type):
 		type = new_type
 		if is_instance_valid(mobdrop):
-			mobdrop.frame = type + 3
+			mobdrop.frame = type + 4
 @onready var mobdrop: Sprite2D = $Mobdrop
 
 var target: Node2D
@@ -16,4 +16,4 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(target):
-		global_position = (target.global_position - global_position).normalized() * FLY_SPEED * delta
+		global_position += (target.global_position - global_position).normalized() * FLY_SPEED * delta
