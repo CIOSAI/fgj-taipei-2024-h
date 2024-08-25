@@ -36,7 +36,7 @@ func _on_hp_hp_updated(new_hp):
 		Global.player_died.emit()
 
 func append_canon(canon: AutoCanon):
-	add_child(canon)
+	add_child.call_deferred(canon)
 
 func leave_lagacy() -> void:
 	var picker_to_leave:= canon_picker_res.instantiate()

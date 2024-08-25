@@ -4,6 +4,8 @@ extends Node
 signal player_died
 signal time_skipped
 signal player_updated
+signal boss_defeated
+
 var player: Player :
 	set(p):
 		player = p
