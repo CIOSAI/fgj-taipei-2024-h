@@ -89,6 +89,7 @@ material = SubResource("ShaderMaterial_o4cc7")
 
 [node name="Victory" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 visible = false
 
 [node name="Control" type="Control" parent="Victory"]
@@ -134,5 +135,6 @@ text = "Back to title"
 [node name="PlayerDeathSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_k7w0p")
+volume_db = -8.0
 
 [connection signal="pressed" from="Victory/Control/Back" to="." method="_on_back_pressed"]

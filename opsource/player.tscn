@@ -247,6 +247,10 @@ stream = ExtResource("14_tk075")
 [node name="PickedSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("15_p8d8t")
+volume_db = -8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aakfo")
 
 [connection signal="hp_updated" from="HP" to="." method="_on_hp_hp_updated"]
 [connection signal="area_entered" from="MoneyAccepter" to="MoneyAccepter" method="_on_area_entered"]
