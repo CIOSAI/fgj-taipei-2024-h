@@ -19,16 +19,15 @@ func _physics_process(delta: float) -> void:
 
 func _draw() -> void:
 	var bullet_color: Color
-	if !base_damage.damage_typed:
-		bullet_color = Color.BURLYWOOD
-	else:
-		match base_damage.damage_type:
-			DamageStats.DamageType.WIND:
-				bullet_color = Color.SKY_BLUE
-			DamageStats.DamageType.ICE:
-				bullet_color = Color.CYAN
-			DamageStats.DamageType.FIRE:
-				bullet_color = Color.PALE_VIOLET_RED
+	match base_damage.damage_type:
+		DamageStats.DamageType.NONE:
+			bullet_color = Color.BURLYWOOD
+		DamageStats.DamageType.WIND:
+			bullet_color = Color.SKY_BLUE
+		DamageStats.DamageType.ICE:
+			bullet_color = Color.CYAN
+		DamageStats.DamageType.FIRE:
+			bullet_color = Color.PALE_VIOLET_RED
 	draw_circle(Vector2.ZERO, 10, bullet_color)
 	%Particles.color = bullet_color
 

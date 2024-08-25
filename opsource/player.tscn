@@ -85,6 +85,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_by5le")
+canon_template = ExtResource("2_jkxhu")
 
 [node name="Healthbar" parent="." instance=ExtResource("2_j3hkg")]
 unique_name_in_owner = true
@@ -104,6 +105,11 @@ hframes = 8
 
 [node name="AutoCanon" parent="." instance=ExtResource("2_jkxhu")]
 damage_modifiers = Array[ExtResource("4_p3tim")]([SubResource("Resource_bgfhp"), SubResource("Resource_hbwto")])
+
+[node name="CanonPickerAccepter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
 
 [node name="MoneyAccepter" type="Area2D" parent="."]
 collision_layer = 0

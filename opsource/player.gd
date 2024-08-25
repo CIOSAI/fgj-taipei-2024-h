@@ -3,6 +3,7 @@ class_name Player
 
 signal died
 
+@export var canon_template: PackedScene
 const MAX_SPEED: float = 200.0
 const ACCE: float = 800.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -30,3 +31,32 @@ func _on_hp_hp_updated(new_hp):
 	%Healthbar.set_hp(new_hp)
 	if new_hp<=0:
 		died.emit()
+		Global.player_died.emit()
+
+func append_canon(canon: AutoCanon):
+	add_child(canon)
+
+func leave_lagacy() -> void:
+	var picker_to_leave:= CanonPicker.new()
+	for child in get_children():
+		if child is AutoCanon:
+			child.time_gap_between_shoot *= 1.7
+			picker_to_leave.lagacy_canons.append(child.duplicate())
+	
+	var my_canon:= canon_template.instantiate()
+	var my_money: int = 0
+	var top_type: int = 0
+	var top_type_money: int = 0
+	var top_money_occuered_times: int = 1
+	for i: int in $MoneyAccepter.collected_money.size():
+		my_money += $MoneyAccepter.collected_money[i]
+		if $MoneyAccepter.collected_money[i] > top_type_money:
+			top_type_money = $MoneyAccepter.collected_money[i]
+			top_type = i
+			top_money_occuered_times = 1
+		elif $MoneyAccepter.collected_money[i] == top_type_money:
+			top_money_occuered_times += 1
+	
+	if top_money_occuered_times > 1:
+		top_type = 0
+	my_canon.bullet.base_damage.damage_type = top_type 
