@@ -17,10 +17,15 @@ var rotating_radius: float = PI / 4
 func _ready() -> void:
 	##Call setter
 	type = type
+	update_target()
+	Global.player_updated.connect(update_target)
+
+func update_target():
 	if is_instance_valid(Global.player):
 		target = Global.player
+		print(target)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_instance_valid(target):
 		moving_direction = - (global_position - target.global_position).normalized()
 	else:
@@ -36,3 +41,7 @@ func _on_sprite_update_timer_timeout() -> void:
 func _on_hp_hp_updated(new_hp: int) -> void:
 	if new_hp <= 0:
 		queue_free()
+
+func set_attack(attack: int) -> void:
+	await ready
+	attack_box.damage_modifiers.append(IncreaseDamage.new(attack))
