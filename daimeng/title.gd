@@ -10,7 +10,7 @@ func _on_close_button_pressed() -> void:
 
 func _on_credit_button_pressed() -> void:
 	$CreditPanel.show()
-
+	
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 

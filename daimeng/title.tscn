@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3tomm80jw2ky"]
+[gd_scene load_steps=10 format=3 uid="uid://c3tomm80jw2ky"]
 
 [ext_resource type="Script" path="res://daimeng/title.gd" id="1_ujo3o"]
+[ext_resource type="Texture2D" uid="uid://dxwwv8do40s3q" path="res://daimeng/cloudmountain.jpeg" id="3_6bwn3"]
+[ext_resource type="Texture2D" uid="uid://cirgpjn5jaek0" path="res://daimeng/logo.png" id="3_ao0jn"]
+[ext_resource type="Texture2D" uid="uid://b4qk480facb8v" path="res://daimeng/playbutton.png" id="4_4qujf"]
+[ext_resource type="Texture2D" uid="uid://dfglqu7vr20fi" path="res://daimeng/controlsbutton.png" id="5_a72yd"]
+[ext_resource type="Texture2D" uid="uid://cx8h14877uimh" path="res://daimeng/creditsbutton.png" id="6_1404e"]
+[ext_resource type="Texture2D" uid="uid://4sxnpmdh1gu8" path="res://daimeng/exitbutton.png" id="7_y652f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5bu"]
 content_margin_left = 80.0
@@ -27,6 +33,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ujo3o")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_6bwn3")
+expand_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
@@ -34,40 +46,47 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_ao0jn")
+stretch_mode = 5
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 80
-bbcode_enabled = true
-text = "[center]Legacy Survivor[/center]"
-fit_content = true
+size_flags_vertical = 2
 
 [node name="PlayButton" type="MenuButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
 theme_override_font_sizes/font_size = 60
-text = "Play"
+icon = ExtResource("4_4qujf")
+icon_alignment = 1
 
 [node name="ControlButton" type="MenuButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
 theme_override_font_sizes/font_size = 54
-text = "Controls"
+icon = ExtResource("5_a72yd")
+icon_alignment = 1
 
 [node name="CreditButton" type="MenuButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
 theme_override_font_sizes/font_size = 48
-text = "Credits"
+icon = ExtResource("6_1404e")
+icon_alignment = 1
 
 [node name="ExitButton" type="MenuButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
 theme_override_font_sizes/font_size = 42
-text = "Exit"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+icon = ExtResource("7_y652f")
+icon_alignment = 1
 
 [node name="CreditPanel" type="PanelContainer" parent="."]
 visible = false
