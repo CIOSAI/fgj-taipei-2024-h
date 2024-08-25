@@ -13,6 +13,7 @@ var moving_direction:= Vector2.ZERO
 var rotating_radius: float = PI / 4
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var attack_box: AttackBox = $AttackBox
+@export var drop: PackedScene
 
 func _ready() -> void:
 	##Call setter
@@ -40,6 +41,10 @@ func _on_sprite_update_timer_timeout() -> void:
 func _on_hp_hp_updated(new_hp: int) -> void:
 	%HurtAnim.play("default")
 	if new_hp <= 0:
+		var drop_money: Money = drop.instantiate()
+		drop_money.global_position = global_position
+		drop_money.type = type
+		get_tree().current_scene.add_child.call_deferred(drop_money)
 		queue_free()
 
 func set_attack(attack: int) -> void:

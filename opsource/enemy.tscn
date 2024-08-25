@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ds4ujbmhxesq4"]
+[gd_scene load_steps=20 format=3 uid="uid://ds4ujbmhxesq4"]
 
 [ext_resource type="Script" path="res://opsource/enemy.gd" id="1_frx04"]
+[ext_resource type="PackedScene" uid="uid://cblpsvadnrkme" path="res://opsource/money.tscn" id="2_ct7se"]
 [ext_resource type="PackedScene" uid="uid://341ttooqaifg" path="res://opsource/hurtbox.tscn" id="2_f18s3"]
 [ext_resource type="PackedScene" uid="uid://clrq0mh0nxkgn" path="res://daimeng/hp.tscn" id="2_gxw51"]
 [ext_resource type="PackedScene" uid="uid://dnbem0so0uutw" path="res://opsource/hp.tscn" id="3_hbo00"]
@@ -8,7 +9,7 @@
 [ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="5_akl51"]
 [ext_resource type="Script" path="res://opsource/attack_box.gd" id="6_6my2k"]
 [ext_resource type="Script" path="res://opsource/damage.gd" id="7_kiokv"]
-[ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="9_c5e1h"]
+[ext_resource type="PackedScene" path="res://idea_ciosai/component/hurt_particle.tscn" id="9_c5e1h"]
 [ext_resource type="AudioStream" uid="uid://sd2pi4hhyixb" path="res://idea_ciosai/asset/enemy_hurt.ogg" id="10_njb80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieygw"]
@@ -29,6 +30,33 @@ damage_type = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rorm3"]
 radius = 47.0425
+
+[sub_resource type="Animation" id="Animation_s58rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_a28f8"]
 resource_name = "default"
@@ -72,33 +100,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_s58rt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtParticle:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_68llu"]
 _data = {
 "RESET": SubResource("Animation_s58rt"),
@@ -108,6 +109,7 @@ _data = {
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_frx04")
+drop = ExtResource("2_ct7se")
 
 [node name="Healthbar" parent="." instance=ExtResource("2_gxw51")]
 offset_left = -50.0

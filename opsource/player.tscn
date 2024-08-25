@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://opsource/damage_modifier/change_damage_type.gd" id="6_3oq2x"]
 [ext_resource type="Shader" path="res://idea_ciosai/component/hurt_flash.gdshader" id="6_77rmi"]
 [ext_resource type="Script" path="res://opsource/money_accepter.gd" id="9_54t3l"]
-[ext_resource type="PackedScene" uid="uid://bvlxiktk7n73b" path="res://idea_ciosai/component/hurt_particle.tscn" id="13_7krvs"]
+[ext_resource type="PackedScene" path="res://idea_ciosai/component/hurt_particle.tscn" id="13_7krvs"]
 [ext_resource type="AudioStream" uid="uid://xfj26binwoxn" path="res://idea_ciosai/asset/player_hurt.ogg" id="14_tk075"]
 [ext_resource type="AudioStream" uid="uid://cph5vdwqostxr" path="res://idea_ciosai/asset/item_picked_up.ogg" id="15_p8d8t"]
 
@@ -96,6 +96,33 @@ _data = {
 "walk": SubResource("Animation_hqqqd")
 }
 
+[sub_resource type="Animation" id="Animation_s58rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_a28f8"]
 resource_name = "default"
 length = 0.3
@@ -136,33 +163,6 @@ tracks/2/keys = {
 "args": [0.0],
 "method": &"play"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_s58rt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtParticle:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_68llu"]
